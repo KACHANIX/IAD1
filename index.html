@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>IAD 1</title>
+    <meta charset="utf-8">
+    <style>
+    	body{
+    		margin: 0;
+            background-color: #f2f2f2;
+            color: #000000;
+    		font: Times;
+            min-width:  1200px;
+    	}
+    	header{
+            min-width: 900px;
+    		height: 70px;
+    		width: 100%;
+    		font: sans-serif;
+    		color: #000000;
+    		font-size: 20px;
+    		background-color: #1E90FF;
+    		border-radius: 0 0 10px 10px; 
+    	}
+    	header > .header-text{
+            margin: 0 30px;
+    		float: left;
+    	}
+    	header > .header-image{
+    		float: right;
+            margin: 0 30px; 
+    	}
+        label {
+            float: left;
+            padding: 2px 50px 0 0;
+        }
+        h1{
+            margin: 3% 45% ;
+        }
+        input[type=radio] {
+            float: left;
+            clear: none;
+            margin: 2px 0 0 2px;
+        }
+
+        input[type=text] {
+            float: left;
+            clear: none;
+            margin: 0 240px;
+            text-align: center;
+        }
+        input[type=submit] {
+            float: left;
+            clear: none;
+            margin: 0 300px;
+            text-align: center;
+        }
+        .content{
+            width: 100%;
+            min-width: 1500px;
+            height: 800px;
+        }
+    	.input{
+            margin: 0 0 0 200px;
+    		width: 700px;
+    		height: 700px;
+    		float: left;
+    	}
+    	.areas{
+            height: 700px;
+            width: 600px;
+            margin: 0;
+    		float: right;
+    	}
+        div.block{
+            margin: 5% 0% ;
+            width: 698px;
+            height: 150px;
+        }
+        .border{
+            border: 2px solid #1E90FF;
+        }
+
+        #X{
+            margin:0 315px;
+        }
+        #R{
+            margin:0 0 0 315px;
+        }
+    	#VT-img{
+    		height: 65px;
+    		width: 70px;
+    	}
+    	#areas-img{
+    		margin: 70px 0 0 20px;
+    	}
+        #error_message{
+            visibility: hidden;
+            color: red;
+            margin: 0 250px;
+        }
+
+    </style>
+    <script type="text/javascript">
+        function validate(form){
+            let has_errors = false;
+            form.Y.value = form.Y.value.replace(",", ".");
+            var y_val = Number(form.Y.value);
+            if (form.Y.value == ""||y_val >= 5 || y_val <= -5 || isNaN(y_val)) {
+                document.getElementById("error_message").style="visibility: visible";
+                has_errors |= true;
+            }
+            return !has_errors;
+        }
+    </script>
+</head>
+<body>
+<header>
+	<div class="header-text">
+		<div>Сергей Кочарян, Александр Артамонов</div>
+		<div>P3218</div>
+		<div>Вариант 28806</div>
+	</div>
+	<div class="header-image">
+		<img id="VT-img" src="images/VT.jpg">
+	</div>
+</header>
+<div class="content">
+	<div class="input">
+		<form onsubmit="return validate(this)" method="post" action="results.php" id="form">  
+            <div>
+                <div class="block border">
+                    <h1>X:</h1>
+                    <div id="X">
+                        <select name="SelectX" >
+                            <option selected value="-4">-4</option>
+                            <option value="-3">-3</option>
+                            <option value="-2">-2</option>
+                            <option value="-1">-1</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="block border">
+                    <h1>Y:</h1>
+                    <input type="text" name="Y" placeholder="(-5..5)">
+                    <br>
+                    <div id="error_message">
+                        Wrong input value y
+                    </div>
+                </div>
+                <div class="block border">
+                    <h1>R:</h1>
+                    <div id="R">
+                        <select name="SelectR">
+                            <option selected value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <input type="submit" value="CHECK">
+                </div>
+                
+            </div>      
+        </form>
+	</div>
+
+	<div class="areas">
+		<img id="areas-img" class="border" src="images/areas.png">
+	</div>
+</div>
+</body>
+</html>
+    
